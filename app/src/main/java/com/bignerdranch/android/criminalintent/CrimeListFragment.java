@@ -20,9 +20,17 @@ public class CrimeListFragment extends Fragment {
 
     //holds a list_item_crime views, binds it to different Crime objects
     private class CrimeHolder extends RecyclerView.ViewHolder {
+        private TextView mTitleTextView;
+        private TextView mDateTextView;
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent){
             //you can find the view in CrimeHolder.itemView
             super(inflater.inflate(R.layout.list_item_crime, parent, false));
+            mTitleTextView = itemView.findViewById(R.id.crime_title);
+            mDateTextView = itemView.findViewById(R.id.crime_date);
+        }
+        public void bind(Crime crime){
+            mTitleTextView.setText(crime.getTitle());
+            mDateTextView.setText(crime.getDate().toString());
         }
     }
 
@@ -43,11 +51,7 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull CrimeHolder holder, int position) {
             Crime crime = mCrimes.get(position);
-            TextView titleView = holder.itemView.findViewById(R.id.crime_title);
-            titleView.setText(crime.getTitle());
-            TextView dateView = holder.itemView.findViewById(R.id.crime_date);
-            dateView.setText(crime.getDate().toString());
-
+            holder.bind(crime);
         }
 
         @Override
