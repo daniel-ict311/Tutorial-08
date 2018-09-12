@@ -26,6 +26,7 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+    private Button mDeleteButton;
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
@@ -53,6 +54,15 @@ public class CrimeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
+
+        mDeleteButton = v.findViewById(R.id.delete_crime);
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CrimeLab.get(getActivity()).deleteCrime(mCrime);
+                getActivity().finish();
+            }
+        });
 
         mTitleField = v.findViewById(R.id.crime_title);
         mTitleField.setText(mCrime.getTitle());
