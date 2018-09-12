@@ -36,6 +36,8 @@ public class CrimeListFragment extends Fragment {
 
     }
 
+
+
     //holds a list_item_crime views, binds it to different Crime objects
     private class CrimeHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
@@ -65,6 +67,10 @@ public class CrimeListFragment extends Fragment {
     //connects the RecyclerView to the CrimeHolder classes
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder>{
         private List<Crime> mCrimes;
+
+        public void setCrimes(List<Crime> crimes){
+            mCrimes = crimes;
+        }
 
         public CrimeAdapter(List<Crime> crimes){
             mCrimes = crimes;
@@ -120,6 +126,7 @@ public class CrimeListFragment extends Fragment {
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.notifyDataSetChanged();
+            mAdapter.setCrimes(crimes);
         }
 
         updateSubtitle();
