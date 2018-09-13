@@ -6,11 +6,20 @@ import java.util.UUID;
 public class Crime {
     private UUID mId;
     private String mTitle;
+    private String mSuspect;
     private Date mDate;
     private boolean mSolved;
 
     public UUID getId() {
         return mId;
+    }
+
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
     }
 
     public String getTitle() {
@@ -45,4 +54,6 @@ public class Crime {
         mId = uuid;
         mDate = new Date();
     }
+
+
 }

@@ -40,6 +40,7 @@ public class CrimeLab {
         values.put(CrimeTable.cols.TITLE, crime.getTitle());
         values.put(CrimeTable.cols.DATE, crime.getDate().getTime());
         values.put(CrimeTable.cols.SOLVED, crime.isSolved() ? 1 : 0);
+        values.put(CrimeTable.cols.SUSPECT, crime.getSuspect());
 
         return values;
     }
